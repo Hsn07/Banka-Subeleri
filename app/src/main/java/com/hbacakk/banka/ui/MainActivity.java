@@ -1,8 +1,10 @@
-package com.hbacakk.banka;
+package com.hbacakk.banka.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.hbacakk.banka.R;
 
 public class MainActivity extends AppCompatActivity {
 
