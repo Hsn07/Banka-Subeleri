@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.hbacakk.banka.R;
 import com.hbacakk.banka.data.models.Sube;
@@ -62,6 +63,15 @@ public class SubeFragment extends Fragment implements SubeListener {
             public boolean onQueryTextChange(String s) {
                 subeAdapter.search(s);
                 return false;
+            }
+        });
+        //endregion
+        //region: SwipeRefresh Layout
+        subeBinding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                subeBinding.swipeRefreshLayout.setRefreshing(false);
+                getBankaData();
             }
         });
         //endregion
