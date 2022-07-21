@@ -1,7 +1,5 @@
 package com.hbacakk.banka.ui.fragmentSube;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +23,8 @@ public class SubeFragment extends Fragment implements SubeListener {
     MainViewModel mainViewModel;
 
     SubeAdapter subeAdapter;
-    static String TAG="SubeFragment";
+    static String TAG = "SubeFragment";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,6 @@ public class SubeFragment extends Fragment implements SubeListener {
         subeAdapter.setSubeListener(this);
         subeBinding.recyclerView.setAdapter(subeAdapter);
         //endregion
-
         //region: SearchBar
         subeBinding.searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -67,6 +65,8 @@ public class SubeFragment extends Fragment implements SubeListener {
             }
         });
         //endregion
+
+
     }
 
     @Override
@@ -78,16 +78,12 @@ public class SubeFragment extends Fragment implements SubeListener {
     private void getBankaData() {
         subeBinding.setLoading(true);
         mainViewModel.getBankaSubeleri().observe(getActivity(), response -> {
-            Log.d(TAG, "getBankaData: "+response.size());
+            Log.d(TAG, "getBankaData: " + response.size());
             if (response != null) {
                 subeBinding.setLoading(false);
                 subeAdapter.setSubeArrayList(response);
-                if (response.size() < 1) {
-                    subeBinding.setListofEmpty(true);
-                } else {
-                    subeBinding.setListofEmpty(false);
-                }
-            }else {
+                subeBinding.setListofEmpty(response.size() < 1);
+            } else {
                 subeBinding.setListofEmpty(true);
             }
         });
@@ -99,4 +95,6 @@ public class SubeFragment extends Fragment implements SubeListener {
         action.setSube(sube);
         Navigation.findNavController(subeBinding.getRoot()).navigate(action);
     }
+
+
 }

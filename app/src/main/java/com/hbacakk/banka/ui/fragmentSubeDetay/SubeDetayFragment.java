@@ -15,15 +15,18 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.hbacakk.banka.R;
 import com.hbacakk.banka.data.models.Sube;
 import com.hbacakk.banka.databinding.DialogInfoBinding;
 import com.hbacakk.banka.databinding.FragmentSubeDetayBinding;
-import com.hbacakk.banka.ui.fragmentSube.SubeFragmentDirections;
 
 public class SubeDetayFragment extends Fragment {
 
     FragmentSubeDetayBinding detayBinding;
+    FirebaseAnalytics firebaseAnalytics;
+    static String TAG = "SubeDetayFragment";
+    Sube sube;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,42 @@ public class SubeDetayFragment extends Fragment {
     }
 
     private void initialize() {
+        //region: Firebase Analytics
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
+        //endregion
+
         if (getArguments() == null) {
             Toast.makeText(getActivity(), "İllegal Erişim", Toast.LENGTH_SHORT).show();
+            goSubePage();
         }
+        sube = SubeDetayFragmentArgs.fromBundle(getArguments()).getSube();
 
-        Sube sube = SubeDetayFragmentArgs.fromBundle(getArguments()).getSube();
+        //region: Sube Loglama
+        Bundle bundle = new Bundle();
+        bundle.putString("Sehir", sube.Sehir);
+        bundle.putString("Ilce", sube.Ilce);
+        bundle.putString("BankaTipi", sube.BankaTipi);
+        bundle.putString("BankaKodu", sube.BankaKodu);
+        bundle.putString("AdresAdi", sube.AdresAdi);
+        bundle.putString("Adres", sube.Adres);
+        bundle.putString("PostaKodu", sube.PostaKodu);
+        bundle.putString("BolgeKoordinatorlugu", sube.BolgeKoordinatorlugu);
+        bundle.putString("EnYakinAtm", sube.EnYakinAtm);
+        firebaseAnalytics.logEvent("sube", bundle);
+        //endregion
 
         detayBinding.setSube(sube);
+
+
+        setListener();
+
+
+    }
+
+    private void setListener() {
+        detayBinding.imageView.setOnClickListener(view -> {
+            goSubePage();
+        });
 
         detayBinding.layoutYolTarifiAl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,14 +91,11 @@ public class SubeDetayFragment extends Fragment {
             }
         });
 
-        setListener();
     }
 
-    private void setListener() {
-        detayBinding.imageView.setOnClickListener(view -> {
-            NavDirections navDirections=SubeDetayFragmentDirections.actionSubeDetayFragmentToSubeFragment();
-            Navigation.findNavController(detayBinding.getRoot()).navigate(navDirections);
-        });
+    private void goSubePage() {
+        NavDirections navDirections = SubeDetayFragmentDirections.actionSubeDetayFragmentToSubeFragment();
+        Navigation.findNavController(detayBinding.getRoot()).navigate(navDirections);
     }
 
 
