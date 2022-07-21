@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1077180289433",
+    "project_id": "banka-sube",
+    "storage_bucket": "banka-sube.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077180289433:android:d24809da67d28542764308",
+        "android_client_info": {
+          "package_name": "com.hbacakk.banka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077180289433-co3950d3igu0ih3fhap6dqo7ghocsogj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4mocayxPCNCeDUQ8wD-ciZSoM8pLbq7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077180289433-co3950d3igu0ih3fhap6dqo7ghocsogj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
