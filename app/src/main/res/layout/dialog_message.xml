@@ -62,6 +62,7 @@
                     app:lottie_autoPlay="true"
                     android:layout_margin="@dimen/_3sdp"
                     app:lottie_rawRes="@raw/error_anim"
+                    app:lottie_loop="true"
                     app:lottie_repeatMode="restart"
                     android:layout_gravity="center_horizontal" />
 
