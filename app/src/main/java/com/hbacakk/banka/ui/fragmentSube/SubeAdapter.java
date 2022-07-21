@@ -1,4 +1,4 @@
-package com.hbacakk.banka.ui;
+package com.hbacakk.banka.ui.fragmentSube;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -17,12 +17,19 @@ import java.util.List;
 public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder> {
 
     ArrayList<Sube> subeArrayList = new ArrayList<>();
-    ArrayList<Sube> sourceArraylist ;
+    ArrayList<Sube> sourceArraylist;
+    SubeListener subeListener;
 
     public void setSubeArrayList(List<Sube> subeList) {
-        subeArrayList.addAll(subeList);
-        sourceArraylist=subeArrayList;
-        notifyDataSetChanged();
+        if (subeArrayList != null) {
+            subeArrayList.addAll(subeList);
+            sourceArraylist = subeArrayList;
+            notifyDataSetChanged();
+        }
+    }
+
+    public void setSubeListener(SubeListener subeListener) {
+        this.subeListener = subeListener;
     }
 
     @NonNull
@@ -55,20 +62,22 @@ public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder
 
         public void setData(Sube sube) {
             subeBinding.setSube(sube);
+            subeBinding.subeContainer.setOnClickListener(view -> subeListener.SelectSube(sube));
             subeBinding.executePendingBindings();
         }
     }
-    public void search(final String searchKeyword){
-        if (searchKeyword.trim().isEmpty()){
-            subeArrayList=sourceArraylist;
-        }else {
-            ArrayList<Sube> temp=new ArrayList<>();
-            for (Sube sube:sourceArraylist){
-                if (sube.Sehir.toLowerCase().contains(searchKeyword.toLowerCase()) ){
+
+    public void search(final String searchKeyword) {
+        if (searchKeyword.trim().isEmpty()) {
+            subeArrayList = sourceArraylist;
+        } else {
+            ArrayList<Sube> temp = new ArrayList<>();
+            for (Sube sube : sourceArraylist) {
+                if (sube.Sehir.toLowerCase().contains(searchKeyword.toLowerCase())) {
                     temp.add(sube);
                 }
             }
-            subeArrayList=temp;
+            subeArrayList = temp;
         }
         notifyDataSetChanged();
     }

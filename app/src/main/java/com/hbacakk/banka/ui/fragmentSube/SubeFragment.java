@@ -11,18 +11,20 @@ import android.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.hbacakk.banka.R;
+import com.hbacakk.banka.data.models.Sube;
 import com.hbacakk.banka.databinding.FragmentSubeBinding;
-import com.hbacakk.banka.ui.SubeAdapter;
 import com.hbacakk.banka.viewmodels.MainViewModel;
 
-public class SubeFragment extends Fragment {
+public class SubeFragment extends Fragment implements SubeListener {
 
     FragmentSubeBinding subeBinding;
     MainViewModel mainViewModel;
 
     SubeAdapter subeAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +47,10 @@ public class SubeFragment extends Fragment {
         //endregion
         //region: RecyclerView Adapter oluşturma
         subeAdapter = new SubeAdapter();
+        subeAdapter.setSubeListener(this);
         subeBinding.recyclerView.setAdapter(subeAdapter);
         //endregion
 
-        getBankaData();
 
         //region: SearchBar
         subeBinding.searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -66,6 +68,12 @@ public class SubeFragment extends Fragment {
         //endregion
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getBankaData();
+    }
+
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -75,7 +83,7 @@ public class SubeFragment extends Fragment {
     private void getBankaData() {
         if (isNetworkConnected()) {
             subeBinding.setLoading(true);
-            mainViewModel.getBankaSubeleri().observe(this, response -> {
+            mainViewModel.getBankaSubeleri().observe(getActivity(), response -> {
                 if (response != null) {
                     subeBinding.setLoading(false);
                     subeAdapter.setSubeArrayList(response);
@@ -87,5 +95,12 @@ public class SubeFragment extends Fragment {
     }
 
     private void showMessage() {
+    }
+
+    @Override
+    public void SelectSube(Sube sube) {
+        SubeFragmentDirections.ActionSubeFragmentToSubeDetayFragment action = SubeFragmentDirections.actionSubeFragmentToSubeDetayFragment();
+        action.setSube(sube);
+        Navigation.findNavController(subeBinding.getRoot()).navigate(action);
     }
 }

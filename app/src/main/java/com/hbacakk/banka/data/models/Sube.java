@@ -3,7 +3,9 @@ package com.hbacakk.banka.data.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Sube {
+import java.io.Serializable;
+
+public class Sube implements Serializable {
     @SerializedName("ID")
     @Expose
     public Integer id;

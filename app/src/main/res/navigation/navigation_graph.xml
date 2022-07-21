@@ -19,8 +19,10 @@
         android:name="com.hbacakk.banka.ui.fragmentSubeDetay.SubeDetayFragment"
         android:label="fragment_sube_detay"
         tools:layout="@layout/fragment_sube_detay" >
-        <action
-            android:id="@+id/action_subeDetayFragment_to_subeFragment"
-            app:destination="@id/subeFragment" />
+        <argument
+            android:name="sube"
+            app:argType="com.hbacakk.banka.data.models.Sube"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>
