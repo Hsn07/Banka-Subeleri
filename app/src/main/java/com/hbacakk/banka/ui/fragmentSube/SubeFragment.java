@@ -53,8 +53,6 @@ public class SubeFragment extends Fragment implements SubeListener {
         subeBinding.recyclerView.setAdapter(subeAdapter);
         //endregion
 
-
-
         //region: SearchBar
         subeBinding.searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
