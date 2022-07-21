@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements NetworkChangeList
     }
 
     @Override
+    public void onBackPressed() {
+    }
+
+    @Override
     public void onChanged(boolean isConnected) {
         if (isConnected){
             mainBinding.setIsConnected(true);

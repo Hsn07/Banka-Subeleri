@@ -1,5 +1,6 @@
 package com.hbacakk.banka.ui.fragmentSube;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -16,16 +17,22 @@ import java.util.List;
 
 public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder> {
 
-    ArrayList<Sube> subeArrayList = new ArrayList<>();
+    ArrayList<Sube> subeArrayList;
     ArrayList<Sube> sourceArraylist;
     SubeListener subeListener;
+    static String TAG = "";
 
     public void setSubeArrayList(List<Sube> subeList) {
-        if (subeArrayList != null) {
-            subeArrayList.addAll(subeList);
-            sourceArraylist = subeArrayList;
-            notifyDataSetChanged();
-        }
+        if (subeArrayList == null)
+            subeArrayList = new ArrayList<>();
+
+        subeArrayList.addAll(subeList);
+        sourceArraylist = subeArrayList;
+        notifyDataSetChanged();
+
+
+        Log.d(TAG, "setSubeArrayList: " + subeList.size());
+        Log.d(TAG, "setSubeArrayList: " + subeArrayList.size());
     }
 
     public void setSubeListener(SubeListener subeListener) {
@@ -49,7 +56,7 @@ public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder
 
     @Override
     public int getItemCount() {
-        return subeArrayList.size();
+        return sourceArraylist != null ? subeArrayList.size() : 0;
     }
 
     class SubeViewHolder extends RecyclerView.ViewHolder {

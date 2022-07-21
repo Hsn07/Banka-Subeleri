@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_sube" >
         <action
             android:id="@+id/action_subeFragment_to_subeDetayFragment"
-            app:destination="@id/subeDetayFragment" />
+            app:destination="@id/subeDetayFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+            />
     </fragment>
     <fragment
         android:id="@+id/subeDetayFragment"
@@ -24,5 +29,12 @@
             app:argType="com.hbacakk.banka.data.models.Sube"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_subeDetayFragment_to_subeFragment"
+            app:destination="@id/subeFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
 </navigation>

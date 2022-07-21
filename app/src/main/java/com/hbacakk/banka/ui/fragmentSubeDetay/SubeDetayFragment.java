@@ -12,11 +12,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import com.hbacakk.banka.R;
 import com.hbacakk.banka.data.models.Sube;
 import com.hbacakk.banka.databinding.DialogInfoBinding;
 import com.hbacakk.banka.databinding.FragmentSubeDetayBinding;
+import com.hbacakk.banka.ui.fragmentSube.SubeFragmentDirections;
 
 public class SubeDetayFragment extends Fragment {
 
@@ -56,7 +59,16 @@ public class SubeDetayFragment extends Fragment {
             }
         });
 
+        setListener();
     }
+
+    private void setListener() {
+        detayBinding.imageView.setOnClickListener(view -> {
+            NavDirections navDirections=SubeDetayFragmentDirections.actionSubeDetayFragmentToSubeFragment();
+            Navigation.findNavController(detayBinding.getRoot()).navigate(navDirections);
+        });
+    }
+
 
     private void alertDialog(String title, String message, String adress) {
         AlertDialog.Builder _builder = new AlertDialog.Builder(getActivity());

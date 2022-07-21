@@ -3,6 +3,7 @@ package com.hbacakk.banka.ui.fragmentSube;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class SubeFragment extends Fragment implements SubeListener {
     MainViewModel mainViewModel;
 
     SubeAdapter subeAdapter;
+    static String TAG="SubeFragment";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class SubeFragment extends Fragment implements SubeListener {
         //endregion
 
 
+
         //region: SearchBar
         subeBinding.searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -70,31 +73,26 @@ public class SubeFragment extends Fragment implements SubeListener {
 
     @Override
     public void onResume() {
-        super.onResume();
         getBankaData();
-    }
-
-    private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+        super.onResume();
     }
 
     private void getBankaData() {
-        if (isNetworkConnected()) {
-            subeBinding.setLoading(true);
-            mainViewModel.getBankaSubeleri().observe(getActivity(), response -> {
-                if (response != null) {
-                    subeBinding.setLoading(false);
-                    subeAdapter.setSubeArrayList(response);
+        subeBinding.setLoading(true);
+        mainViewModel.getBankaSubeleri().observe(getActivity(), response -> {
+            Log.d(TAG, "getBankaData: "+response.size());
+            if (response != null) {
+                subeBinding.setLoading(false);
+                subeAdapter.setSubeArrayList(response);
+                if (response.size() < 1) {
+                    subeBinding.setListofEmpty(true);
+                } else {
+                    subeBinding.setListofEmpty(false);
                 }
-            });
-        } else {
-            showMessage();
-        }
-    }
-
-    private void showMessage() {
+            }else {
+                subeBinding.setListofEmpty(true);
+            }
+        });
     }
 
     @Override
