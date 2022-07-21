@@ -17,9 +17,11 @@ import java.util.List;
 public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder> {
 
     ArrayList<Sube> subeArrayList = new ArrayList<>();
+    ArrayList<Sube> sourceArraylist ;
 
     public void setSubeArrayList(List<Sube> subeList) {
         subeArrayList.addAll(subeList);
+        sourceArraylist=subeArrayList;
         notifyDataSetChanged();
     }
 
@@ -55,6 +57,20 @@ public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder
             subeBinding.setSube(sube);
             subeBinding.executePendingBindings();
         }
+    }
+    public void search(final String searchKeyword){
+        if (searchKeyword.trim().isEmpty()){
+            subeArrayList=sourceArraylist;
+        }else {
+            ArrayList<Sube> temp=new ArrayList<>();
+            for (Sube sube:sourceArraylist){
+                if (sube.Sehir.toLowerCase().contains(searchKeyword.toLowerCase()) ){
+                    temp.add(sube);
+                }
+            }
+            subeArrayList=temp;
+        }
+        notifyDataSetChanged();
     }
 
 }

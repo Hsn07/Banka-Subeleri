@@ -17,6 +17,22 @@
         android:background="@color/colorDarktone"
         tools:context=".ui.fragmentSube.SubeFragment">
 
+        <SearchView
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:searchIcon="@drawable/ic_search"
+            android:searchHintIcon="@drawable/ic_search"
+            android:closeIcon="@drawable/ic_close"
+            android:queryHint="Şehir Giriniz"
+            android:background="@color/colorLightone"
+            android:layout_margin="@dimen/_5sdp"
+            android:clickable="true"
+            />
+
         <LinearLayout
             android:id="@+id/layoutHeader"
             android:layout_width="0dp"
@@ -48,11 +64,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_30sdp"
-            android:visibility="@{loading? View.VISIBLE : View.GONE, default=gone}"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE, default=gone}"
             app:SpinKit_Color="@color/colorGreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+            app:layout_constraintTop_toBottomOf="@id/searchBar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -64,7 +80,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutHeader" />
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
