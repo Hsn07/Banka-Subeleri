@@ -1,5 +1,6 @@
 package com.hbacakk.banka.ui.fragmentSube;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder
     SubeListener subeListener;
     static String TAG = "";
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setSubeArrayList(List<Sube> subeList) {
         if (subeArrayList == null)
             subeArrayList = new ArrayList<>();
@@ -74,6 +76,7 @@ public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void search(final String searchKeyword) {
         if (searchKeyword.trim().isEmpty()) {
             subeArrayList = sourceArraylist;

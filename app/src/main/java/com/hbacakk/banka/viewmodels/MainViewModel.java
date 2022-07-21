@@ -14,7 +14,8 @@ public class MainViewModel extends ViewModel {
     public MainViewModel() {
         this.mainRepository = new MainRepository();
     }
-    public LiveData<List<Sube>> getBankaSubeleri(){
+
+    public LiveData<List<Sube>> getBankaSubeleri() {
         return mainRepository.getBankaSubeleri();
     }
 }

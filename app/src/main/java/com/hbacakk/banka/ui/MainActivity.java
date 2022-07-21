@@ -1,6 +1,5 @@
 package com.hbacakk.banka.ui;
 
-import android.content.Context;
 import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -10,20 +9,18 @@ import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.hbacakk.banka.R;
 import com.hbacakk.banka.databinding.ActivityMainBinding;
 import com.hbacakk.banka.databinding.DialogMessageBinding;
 import com.hbacakk.banka.utilities.NetworkChangeListener;
-import com.hbacakk.banka.viewmodels.MainViewModel;
 
-public class MainActivity extends AppCompatActivity implements NetworkChangeListener.StateChangeListener{
+public class MainActivity extends AppCompatActivity implements NetworkChangeListener.StateChangeListener {
 
 
     ActivityMainBinding mainBinding;
 
-    NetworkChangeListener networkChangeListener=new NetworkChangeListener();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +33,8 @@ public class MainActivity extends AppCompatActivity implements NetworkChangeList
 
     @Override
     protected void onStart() {
-        IntentFilter intentFilter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListener,intentFilter);
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
         super.onStart();
     }
 
@@ -70,12 +67,12 @@ public class MainActivity extends AppCompatActivity implements NetworkChangeList
 
     @Override
     public void onChanged(boolean isConnected) {
-        if (isConnected){
+        if (isConnected) {
             mainBinding.setIsConnected(true);
 
-        }else {
+        } else {
             mainBinding.setIsConnected(false);
-            showMessage("Bağlantı Hatası","İnternet bağlatısı yok. Lütfen internet bağlantınızı kontrol ediniz...");
+            showMessage("Bağlantı Hatası", "İnternet bağlatısı yok. Lütfen internet bağlantınızı kontrol ediniz...");
         }
     }
 }

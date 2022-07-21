@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.hbacakk.banka.R;
 import com.hbacakk.banka.data.models.Sube;
@@ -33,7 +34,7 @@ public class SubeFragment extends Fragment implements SubeListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         subeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_sube, container, false);
 
@@ -67,12 +68,9 @@ public class SubeFragment extends Fragment implements SubeListener {
         });
         //endregion
         //region: SwipeRefresh Layout
-        subeBinding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                subeBinding.swipeRefreshLayout.setRefreshing(false);
-                getBankaData();
-            }
+        subeBinding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            subeBinding.swipeRefreshLayout.setRefreshing(false);
+            getBankaData();
         });
         //endregion
 
@@ -89,13 +87,9 @@ public class SubeFragment extends Fragment implements SubeListener {
         subeBinding.setLoading(true);
         mainViewModel.getBankaSubeleri().observe(getActivity(), response -> {
             Log.d(TAG, "getBankaData: " + response.size());
-            if (response != null) {
-                subeBinding.setLoading(false);
-                subeAdapter.setSubeArrayList(response);
-                subeBinding.setListofEmpty(response.size() < 1);
-            } else {
-                subeBinding.setListofEmpty(true);
-            }
+            subeBinding.setLoading(false);
+            subeAdapter.setSubeArrayList(response);
+            subeBinding.setListofEmpty(response.size() < 1);
         });
     }
 
@@ -103,7 +97,7 @@ public class SubeFragment extends Fragment implements SubeListener {
     public void SelectSube(Sube sube) {
         SubeFragmentDirections.ActionSubeFragmentToSubeDetayFragment action = SubeFragmentDirections.actionSubeFragmentToSubeDetayFragment();
         action.setSube(sube);
-        Navigation.findNavController(subeBinding.getRoot()).navigate(action);
+        Navigation.findNavController(subeBinding.getRoot()).navigate((NavDirections) action);
     }
 
 

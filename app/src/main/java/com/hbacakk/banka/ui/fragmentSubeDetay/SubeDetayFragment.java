@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -25,7 +26,6 @@ public class SubeDetayFragment extends Fragment {
 
     FragmentSubeDetayBinding detayBinding;
     FirebaseAnalytics firebaseAnalytics;
-    static String TAG = "SubeDetayFragment";
     Sube sube;
 
     @Override
@@ -34,7 +34,7 @@ public class SubeDetayFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         detayBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_sube_detay, container, false);
 
         initialize();
@@ -76,18 +76,13 @@ public class SubeDetayFragment extends Fragment {
     }
 
     private void setListener() {
-        detayBinding.imageView.setOnClickListener(view -> {
-            goSubePage();
-        });
+        detayBinding.imageView.setOnClickListener(view -> goSubePage());
 
-        detayBinding.layoutYolTarifiAl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (sube.Adres != null && sube.Adres.length() > 10) {
-                    alertDialog("Google Maps Açılıyor", "Konum bilgisi için google maps açılacaktır. Devam etmek istiyor musunuz?", sube.Adres);
-                } else {
-                    Toast.makeText(getActivity(), "Hatalı veya eksik adress", Toast.LENGTH_SHORT).show();
-                }
+        detayBinding.layoutYolTarifiAl.setOnClickListener(view -> {
+            if (sube.Adres != null && sube.Adres.length() > 10) {
+                alertDialog("Google Maps Açılıyor", "Konum bilgisi için google maps açılacaktır. Devam etmek istiyor musunuz?", sube.Adres);
+            } else {
+                Toast.makeText(getActivity(), "Hatalı veya eksik adress", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -117,9 +112,7 @@ public class SubeDetayFragment extends Fragment {
             openTheGoogleMaps(adress);
             dialog.dismiss();
         });
-        dialogInfoBinding.imageViewClose.setOnClickListener(view -> {
-            dialog.dismiss();
-        });
+        dialogInfoBinding.imageViewClose.setOnClickListener(view -> dialog.dismiss());
 
         dialog.show();
     }
