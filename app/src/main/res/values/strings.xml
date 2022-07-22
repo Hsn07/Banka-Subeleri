@@ -2,4 +2,19 @@
     <string name="app_name">Banka</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="connection_error">Bağlantı Hatası</string>
+    <string name="warning_connection">Internet bağlantısı geldiğinde sayfa otmatik yenilenir</string>
+    <string name="connection_settings">Internet Ayarları</string>
+    <string name="way_directions">Yol Tarifi Al</string>
+    <string name="ok">Tamam</string>
+    <string name="for_search">Aramak için</string>
+    <string name="branches">Şubelerim</string>
+    <string name="list_of_empty">Liste Boş</string>
+    <string name="branch_info">Şube Bilgileri</string>
+    <string name="zone_info">Bölge Bilgileri</string>
+    <string name="branch">Şube</string>
+    <string name="regional_coordinator">Bölge Koordinatörlüğü</string>
+    <string name="nearest_atm">En Yakın Atm</string>
+    <string name="adress_info">Adres Bilgileri</string>
+    <string name="address">Adres Tarifi</string>
 </resources>

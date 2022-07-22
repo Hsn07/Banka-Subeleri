@@ -36,8 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="@{!isConnected ? View.VISIBLE : View.GONE, default=visible}"
-            >
+            android:visibility="@{!isConnected ? View.VISIBLE : View.GONE, default=visible}">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="@dimen/_100sdp"
@@ -50,16 +49,39 @@
                 app:lottie_repeatMode="restart" />
 
             <TextView
-                android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bağlantı Hatası"
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/colorWhite"
-                android:gravity="center"
                 android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
                 android:includeFontPadding="false"
-                />
+                android:text="@string/connection_error"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/_15ssp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/warning_connection"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/_9ssp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/openWifiSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/connection_settings"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="italic" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

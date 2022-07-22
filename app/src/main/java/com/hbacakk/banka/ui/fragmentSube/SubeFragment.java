@@ -1,13 +1,16 @@
 package com.hbacakk.banka.ui.fragmentSube;
 
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,6 +19,7 @@ import androidx.navigation.Navigation;
 
 import com.hbacakk.banka.R;
 import com.hbacakk.banka.data.models.Sube;
+import com.hbacakk.banka.databinding.DialogMessageBinding;
 import com.hbacakk.banka.databinding.FragmentSubeBinding;
 import com.hbacakk.banka.viewmodels.MainViewModel;
 
@@ -77,20 +81,47 @@ public class SubeFragment extends Fragment implements SubeListener {
 
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+    private void getBankaData() {
+        if (isNetworkConnected()) {
+            subeBinding.setLoading(true);
+            mainViewModel.getBankaSubeleri().observe(getActivity(), response -> {
+                if (response != null) {
+                    subeBinding.setLoading(false);
+                    subeAdapter.setSubeArrayList(response);
+                }
+            });
+        } else {
+            showMessage("Bağlantı Hatası", "İnternet bağlatısı yok. Lütfen internet bağlantınızı kontrol ediniz...");
+        }
+    }
+
+    private void showMessage(String title, String message) {
+        AlertDialog.Builder _builder = new AlertDialog.Builder(getActivity());
+        DialogMessageBinding dialogStateBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()),
+                R.layout.dialog_message, null, false);
+
+        _builder.setView(dialogStateBinding.getRoot());
+
+        AlertDialog dialogUpdateState = _builder.create();
+
+        dialogStateBinding.setTitle(title);
+        dialogStateBinding.setMessage(message);
+
+        dialogUpdateState.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+
+        dialogUpdateState.show();
+    }
+
     @Override
     public void onResume() {
         getBankaData();
         super.onResume();
-    }
-
-    private void getBankaData() {
-        subeBinding.setLoading(true);
-        mainViewModel.getBankaSubeleri().observe(getActivity(), response -> {
-            Log.d(TAG, "getBankaData: " + response.size());
-            subeBinding.setLoading(false);
-            subeAdapter.setSubeArrayList(response);
-            subeBinding.setListofEmpty(response.size() < 1);
-        });
     }
 
     @Override
@@ -98,6 +129,11 @@ public class SubeFragment extends Fragment implements SubeListener {
         SubeFragmentDirections.ActionSubeFragmentToSubeDetayFragment action = SubeFragmentDirections.actionSubeFragmentToSubeDetayFragment();
         action.setSube(sube);
         Navigation.findNavController(subeBinding.getRoot()).navigate((NavDirections) action);
+    }
+
+    @Override
+    public void ListSize(int size) {
+        subeBinding.setListofEmpty(size <= 0);
     }
 
 

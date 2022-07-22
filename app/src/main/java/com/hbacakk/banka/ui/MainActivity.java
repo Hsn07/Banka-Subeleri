@@ -1,5 +1,6 @@
 package com.hbacakk.banka.ui;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements NetworkChangeList
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
 
+        mainBinding.openWifiSettings.setOnClickListener(view -> startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS)));
+
         networkChangeListener.setListener(this);
     }
 
@@ -51,14 +54,15 @@ public class MainActivity extends AppCompatActivity implements NetworkChangeList
 
         _builder.setView(dialogStateBinding.getRoot());
 
-        AlertDialog dialogUpdateState = _builder.create();
+        AlertDialog dialogMessage = _builder.create();
 
         dialogStateBinding.setTitle(title);
         dialogStateBinding.setMessage(message);
 
-        dialogUpdateState.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        dialogStateBinding.buttonOk.setOnClickListener(view -> dialogMessage.dismiss());
+        dialogMessage.getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
-        dialogUpdateState.show();
+        dialogMessage.show();
     }
 
     @Override
@@ -69,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements NetworkChangeList
     public void onChanged(boolean isConnected) {
         if (isConnected) {
             mainBinding.setIsConnected(true);
-
         } else {
             mainBinding.setIsConnected(false);
             showMessage("Bağlantı Hatası", "İnternet bağlatısı yok. Lütfen internet bağlantınızı kontrol ediniz...");

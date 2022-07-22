@@ -28,20 +28,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp"
-            android:background="@color/colorLightone"
-            android:clickable="true"
+            android:background="@drawable/background_searh"
             android:closeIcon="@drawable/ic_close"
             android:queryHint="Şehir Giriniz"
             android:searchHintIcon="@drawable/ic_search"
             android:searchIcon="@drawable/ic_search"
+            android:text="@string/for_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+            app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+            app:queryBackground="@android:color/transparent" />
 
         <LinearLayout
             android:id="@+id/layoutHeader"
             android:layout_width="0dp"
             android:layout_height="?android:actionBarSize"
+            android:background="@drawable/background_header"
             android:gravity="center_vertical"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,10 +56,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="Banka Şubelerim"
-                android:textColor="@color/colorWhite"
+                android:text="@string/branches"
+                android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/_17ssp"
                 android:textStyle="italic" />
         </LinearLayout>
@@ -79,10 +82,10 @@
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/searchBar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchBar"
 
             >
 
@@ -129,8 +132,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="Liste Boş"
-                android:textColor="@color/colorWhite"
+                android:text="@string/list_of_empty"
+                android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/_17ssp"
                 android:textStyle="italic" />
         </LinearLayout>

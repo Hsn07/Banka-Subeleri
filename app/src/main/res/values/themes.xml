@@ -1,7 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
+
     <style name="Theme.Banka" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorDarktone</item>
         <item name="colorSecondary">@color/colorLightone</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/colorLightone</item>
+        <item name="android:statusBarColor">@color/colorDark</item>
     </style>
 </resources>

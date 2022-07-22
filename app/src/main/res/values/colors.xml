@@ -9,13 +9,16 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="colorDarktone">#110E33</color>
-    <color name="colorLightone">#1B183E</color>
-    <color name="colorMidtone">#100D35</color>
+    <color name="colorDarktone">#EDF3F4</color>
+    <color name="colorLightone">#FAFAFA</color>
 
     <color name="colorBlue">#614BFF</color>
     <color name="colorGreen">#23D288</color>
     <color name="colorDark">#1B183E</color>
     <color name="colorWhite">#F8F9FF</color>
+
+    <color name="primaryTextColor">#202244</color>
+    <color name="secondaryTextColor">#959D9E</color>
+
 
 </resources>

@@ -3,15 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/background_header.xml" value="0.198" />
         <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/background_location.xml" value="0.1" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/background_ok.xml" value="0.198" />
         <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/background_oval.xml" value="0.171" />
         <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/background_oval_light.xml" value="0.202" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/background_searh.xml" value="0.1" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/background_sube_divider.xml" value="0.198" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/ic_close.xml" value="0.198" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/drawable/ic_search.xml" value="0.198" />
         <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/activity_main.xml" value="0.4531791907514451" />
-        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/dialog_info.xml" value="0.5" />
-        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/dialog_message.xml" value="0.22" />
-        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/fragment_sube.xml" value="0.33" />
-        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/fragment_sube_detay.xml" value="0.28044280442804426" />
-        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/item_sube.xml" value="0.33" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/dialog_info.xml" value="0.33" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/dialog_message.xml" value="0.33" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/fragment_sube.xml" value="0.2574430823117338" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/fragment_sube_detay.xml" value="0.33" />
+        <entry key="..\:/Users/Hasan/Desktop/Banka-Subeleri/app/src/main/res/layout/item_sube.xml" value="0.44547563805104406" />
       </map>
     </option>
   </component>

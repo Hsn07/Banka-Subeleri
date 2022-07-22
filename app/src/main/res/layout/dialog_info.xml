@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="title"
             type="String" />
@@ -22,18 +23,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_20sdp"
             android:layout_marginBottom="1dp"
+            android:backgroundTint="@color/primaryTextColor"
             app:cardCornerRadius="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:backgroundTint="@color/colorWhite"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/_10sdp">
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -43,38 +44,49 @@
 
                     <TextView
                         android:id="@+id/textTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@{title}"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textSize="@dimen/_17ssp"
-                        android:includeFontPadding="false" />
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@{title}"
+                        android:textColor="@color/colorGreen"
+                        android:textSize="@dimen/_17ssp" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@color/white" />
 
                 <TextView
                     android:id="@+id/textMessage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{message}"
-                    android:gravity="center"
-                    android:textSize="@dimen/_15ssp"
-                    android:textStyle="italic"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:fontFamily="@font/poppins_regular"
-                    android:layout_marginBottom="@dimen/_10sdp" />
+                    android:gravity="center"
+                    android:text="@{message}"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="italic" />
 
             </LinearLayout>
+
             <ImageView
                 android:id="@+id/imageViewClose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_close"
                 android:layout_gravity="end"
                 android:layout_margin="@dimen/_5sdp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_close"
                 app:layout_constraintEnd_toEndOf="@+id/cardviewContainer"
                 app:layout_constraintTop_toTopOf="@+id/cardviewContainer"
-                app:tint="#000" />
+                app:tint="#FFFFFF" />
         </com.google.android.material.card.MaterialCardView>
 
 
@@ -82,14 +94,13 @@
             android:id="@+id/buttonOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yol Tarifi Al"
-            app:backgroundTint="@null"
-            android:background="@drawable/background_location"
             android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/background_location"
+            android:text="@string/way_directions"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="@id/cardviewContainer"
             app:layout_constraintEnd_toEndOf="@+id/cardviewContainer"
             app:layout_constraintTop_toBottomOf="@id/cardviewContainer" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
