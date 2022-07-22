@@ -1,5 +1,8 @@
 # Banka-Subeleri
 
+- Uygulama Apk ve tanıtım videosu url kullanabilirsiniz.
+- Url: https://github.com/Hsn07/Banka-Subeleri/tree/main/video_apk
+
 <p float="left">
   <img src="ss/yeni_1.jpg" width="200" />
   <img src="ss/yeni_2.jpg" width="200" />
@@ -11,6 +14,7 @@
   <img src="ss/yeni_8.jpg" width="200" />
   <img src="ss/yeni_9.jpg" width="200" />
 </p>
+
 
 ## Kütüphaneler
 1. Retrofit (Rest istemci kütüphanesi)
