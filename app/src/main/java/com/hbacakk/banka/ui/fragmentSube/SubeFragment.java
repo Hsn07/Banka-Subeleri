@@ -66,7 +66,7 @@ public class SubeFragment extends Fragment implements SubeListener {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                subeAdapter.search(s);
+                subeAdapter.search(s.trim());
                 return false;
             }
         });

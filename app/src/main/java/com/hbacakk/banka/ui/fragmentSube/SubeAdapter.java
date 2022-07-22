@@ -82,7 +82,7 @@ public class SubeAdapter extends RecyclerView.Adapter<SubeAdapter.SubeViewHolder
         } else {
             ArrayList<Sube> temp = new ArrayList<>();
             for (Sube sube : sourceArraylist) {
-                if (sube.Sehir.toLowerCase().contains(searchKeyword.toLowerCase())) {
+                if (sube.Sehir.toLowerCase().trim().contains(searchKeyword.toLowerCase())) {
                     temp.add(sube);
                 }
             }
