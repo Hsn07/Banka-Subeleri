@@ -1,14 +1,15 @@
 # Banka-Subeleri
 
 <p float="left">
-  <img src="ss/anasayfa_1.jpg" width="200" />
-  <img src="ss/anasayfa_2.jpg" width="200" />  
-  <img src="ss/anasayfa_3.jpg" width="200" />
-  <img src="ss/anasayfa_4.jpg" width="200" />
-  <img src="ss/anasayfa_5.jpg" width="200" />
-  <img src="ss/detay_1.jpg" width="200" />
-  <img src="ss/detay_2.jpg" width="200" />
-  <img src="ss/detay_3.jpg" width="200" />
+  <img src="ss/yeni_1.jpg" width="200" />
+  <img src="ss/yeni_2.jpg" width="200" />
+  <img src="ss/yeni_3.jpg" width="200" />
+  <img src="ss/yeni_4.jpg" width="200" />
+  <img src="ss/yeni_5.jpg" width="200" />
+  <img src="ss/yeni_6.jpg" width="200" />
+  <img src="ss/yeni_7.jpg" width="200" />
+  <img src="ss/yeni_8.jpg" width="200" />
+  <img src="ss/yeni_9.jpg" width="200" />
 </p>
 
 ## Kütüphaneler
